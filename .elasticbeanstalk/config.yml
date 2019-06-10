@@ -8,10 +8,9 @@ environment-defaults:
     branch: null
     repository: null
 global:
-  application_name: modanisa_test
-  default_ec2_keyname: modanisa_test
-  default_platform: arn:aws:elasticbeanstalk:eu-central-1::platform/PHP 7.2 running
-    on 64bit Amazon Linux/2.8.10
+  application_name: modanisa_external
+  default_ec2_keyname: modanisa_external
+  default_platform: PHP 7.2
   default_region: eu-central-1
   include_git_submodules: true
   instance_profile: null
