@@ -1,0 +1,26 @@
+branch-defaults:
+  default:
+    environment: ModanisaExternal-env
+  master:
+    environment: ModanisaExternal-env
+environment-defaults:
+  ModanisaExternal-env:
+    branch: null
+    repository: null
+global:
+  application_name: modanisa_test
+  default_ec2_keyname: modanisa_test
+  default_platform: arn:aws:elasticbeanstalk:eu-central-1::platform/PHP 7.2 running
+    on 64bit Amazon Linux/2.8.10
+  default_region: eu-central-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: eb-cli
+  sc: git
+  workspace_type: Application
+
+
+
+  
