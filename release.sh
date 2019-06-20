@@ -52,4 +52,3 @@ git commit --allow-empty -m "Version $newVersion"
 git tag -a "$newVersion" -m "Version $newVersion"
 git push
 git push -u origin "$newVersion"
-    
