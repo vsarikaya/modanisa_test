@@ -50,6 +50,6 @@ echo "Writting new version $newVersion"
 
 git commit --allow-empty -m "Version $newVersion"
 git tag -a "$newVersion" -m "Version $newVersion"
-git push
-git push -u origin "$newVersion"
+git push -u origin master
+git push -u origin master "$newVersion"
     
