@@ -8,12 +8,12 @@ if [ -z "$GIT_TAG_VERSION" ]; then
     exit 1
 fi
 
-EB_VERSION="$(eb status | grep -oP "(?<=Deployed Version: Version )([A-Za-z0-9.]+)(?=$)")"
+EB_VERSION="$(aws elasticbeanstalk describe-application-versions --application-name modanisa_external \
+            | python -c "import json,sys;obj=json.load(sys.stdin);print obj['ApplicationVersions'][0]['VersionLabel'];" \
+            | sed -r "s/Version //" 2>&1)"
 
 # Alternative
-# aws elasticbeanstalk describe-application-versions --application-name modanisa_external \
-# | python -c "import json,sys;obj=json.load(sys.stdin);print obj['ApplicationVersions'][0]['VersionLabel'];" \
-# | sed -r "s/Version //" 2>&1
+# EB_VERSION="$(eb status | grep -oP "(?<=Deployed Version: Version )([A-Za-z0-9.]+)(?=$)")"
 
 if [ "$GIT_TAG_VERSION" = "$EB_VERSION" ]; then
     echo "No have any new tag"

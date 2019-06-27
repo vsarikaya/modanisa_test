@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -o errexit
+
 # Version compare functions
 function version_gt() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" != "$1"; }
 function version_le() { test "$(echo "$@" | tr " " "\n" | sort -V | head -n 1)" == "$1"; }
@@ -51,4 +53,4 @@ echo "Writting new version $newVersion"
 git commit --allow-empty -m "Version $newVersion"
 git tag -a "$newVersion" -m "Version $newVersion"
 git push
-git push -u origin "$newVersion"
+git push -u origin "$newVersion"            
