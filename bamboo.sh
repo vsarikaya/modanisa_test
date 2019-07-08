@@ -19,7 +19,7 @@ EB_VERSION="$(aws elasticbeanstalk describe-application-versions --application-n
 
 if [ "$GIT_TAG_VERSION" = "$EB_VERSION" ]; then
     echo "No have any new tag"
-    exit 1
+    exit 0
 fi
 
 # Compress all files with git tag
@@ -30,7 +30,7 @@ zip "$UPLOAD_FILE_NAME" -r * .[^.]*
 CHECK_EXISTS_S3_FILE=$(aws s3 ls "s3://$S3_BUCKET_FOLDER/$UPLOAD_FILE_NAME" | wc -l)
 if [ "$CHECK_EXISTS_S3_FILE" -ne 0 ]; then
     echo "Version already uploaded"
-    exit 1
+    exit 0
 fi
 
 # Uploading S3
