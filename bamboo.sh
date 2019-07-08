@@ -39,4 +39,4 @@ aws s3 cp "$UPLOAD_FILE_NAME" "s3://$S3_BUCKET_FOLDER/"
 
 # Install new version to ElasticBeanstalk
 echo "aws elasticbeanstalk create-application-version --application-name $EB_APPLICATION_NAME --version-label $UPLOAD_FILE_NAME --source-bundle S3Bucket=$S3_BUCKET,S3Key=$EB_APPLICATION_NAME/$UPLOAD_FILE_NAME"
-aws elasticbeanstalk create-application-version --application-name "$EB_APPLICATION_NAME" --version-label "$UPLOAD_FILE_NAME" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$EB_APPLICATION_NAME/$UPLOAD_FILE_NAME"
+aws elasticbeanstalk create-application-version --application-name "$EB_APPLICATION_NAME" --version-label "$UPLOAD_FILE_NAME" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$EB_APPLICATION_NAME/$UPLOAD_FILE_NAME" --region us-east-1
