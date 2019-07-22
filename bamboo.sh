@@ -3,6 +3,7 @@
 set -o errexit
 
 EB_APPLICATION_NAME="modanisa_external"
+EB_APPLICATION_NAME="ModanisaExternal-Env"
 S3_BUCKET="elasticbeanstalk-eu-central-1-142903308389"
 S3_BUCKET_FOLDER="$S3_BUCKET/$EB_APPLICATION_NAME"
 
@@ -40,3 +41,8 @@ aws s3 cp "$UPLOAD_FILE_NAME" "s3://$S3_BUCKET_FOLDER/"
 # Install new version to ElasticBeanstalk
 echo "aws elasticbeanstalk create-application-version --application-name $EB_APPLICATION_NAME --version-label $UPLOAD_FILE_NAME --source-bundle S3Bucket=$S3_BUCKET,S3Key=$EB_APPLICATION_NAME/$UPLOAD_FILE_NAME"
 aws elasticbeanstalk create-application-version --application-name "$EB_APPLICATION_NAME" --version-label "$UPLOAD_FILE_NAME" --source-bundle S3Bucket="$S3_BUCKET",S3Key="$EB_APPLICATION_NAME/$UPLOAD_FILE_NAME" --region us-east-1
+
+
+# deploy
+echo "aws elasticbeanstalk update-environment --application-name $EB_APPLICATION_NAME --environment-name $EB_ENVIRONMENT_NAME --version-label $UPLOAD_FILE_NAME"
+aws elasticbeanstalk update-environment --application-name "$EB_APPLICATION_NAME" --environment-name "$EB_ENVIRONMENT_NAME" --version-label "$UPLOAD_FILE_NAME"
